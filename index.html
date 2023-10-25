@@ -1,233 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* ------------VARIABLES TO EDIT------------------ */
-    $folds: 6;       // Number of folds
-    $time: 0.5;      // Time of each fold animation
-    $back: #E25875;  // Background color
-    $base: #EEE;     // Paper color
-    /* ----------------------------------------------- */
-
-    $darken: darken($base, 10);
-    $darken2: darken($base, 20);
-    $height: 75%;
-    $width: 15%;
-     <style>
-  /* ... (previous styles) ... */
-
-  #fold.start-animation {
-    animation-play-state: running !important;
-  }
-</style>
-                
-
-    @function pow($b, $e) {
-      $v: 1;
-      @if $e > 0 {
-        @for $i from 1 through $e {
-          $v: $v * $b;
-        }
-      }
-      @return $v;
-    }
-
-    @function foldSizes($step) {
-      $even: $step % 2 == 0;
-      $h: $height / if($even, pow(3, $step / 2), pow(3, ($step - 1) / 2));
-      $w: $width / if($even, pow(3, $step / 2 - 1), pow(3, ($step - 1) / 2));
-      @return $w, $h;
-    }
-
-    @function getSizesSteps($steps) {
-      $str: "";
-      @for $i from 1 to $steps {
-        $state: if(($steps - $i + 1) % 2 == 0, "even", "odd");
-        $delay: (($i - 1) * 2) * $time;
-        $sdelay1: (($i - 1) * 2) * $time;
-        $sdelay2: (($i - 1) * 2 + 1) * $time;
-        $str: $str + "center-" + $i + " " + ($time * 2) + "s " + $delay + "s forwards";
-        $str: $str + ",before-shadow-center-" + $state + " " + $time + "s " + $sdelay1 + "s forwards";
-        $str: $str + ",after-shadow-center-" + $state + " " + $time + "s " + ($sdelay1 + $time) + "s forwards";
-        @if $i < $steps - 1 {
-          $str: $str + ",";
-        }
-      }
-      @return unquote($str);
-    }
-
-    @function getAnimations($prefix, $steps) {
-      $str: "";
-      @for $i from 1 to $steps {
-        $state: if(($steps - $i + 1) % 2 == 0, "even", "odd");
-        $delay: if($prefix == before, (($i - 1) * 2) * $time, (($i - 1) * 2 + 1) * $time);
-        $str: $str + $prefix + "-" + $state + " " + $time + "s " + $delay + "s forwards";
-        $str: $str + "," + $prefix + "-shadow-" + $state + " " + $time + "s " + $delay + "s forwards";
-        @if $i < $steps - 1 {
-          @if $prefix == after {
-            $str: $str + ",after-end-" + $state + " " + $time + "s " + ($delay + $time) + "s forwards";
-          }
-          $str: $str + ",";
-        }
-      }
-      @return unquote($str);
-    }
-
-    @mixin fold-center($step) {
-      $sizes: foldSizes($step);
-      height: nth($sizes, 2);
-      width: nth($sizes, 1);
-    }
-
-    @mixin shadow-center($prefix, $even, $initial: true) {
-      @if $prefix == before {
-        background: linear-gradient(if($even, to right, to bottom), $darken2, $darken2, $base, $base, $base);
-        background-position: if($even, if($initial, 0, 100%), if($initial, 0 0, 0 100%));
-      } @else {
-        background: linear-gradient(if($even, to left, to top), $darken2, $darken2, $base, $base, $base);
-        background-position: if($even, if($initial, 100%, 0), if($initial, 0 100%, 0 0));
-      }
-      background-size: 200% 200%;
-    }
-
-    @mixin fold-before($even, $initial: true) {
-      left: if($even, -100%, 0);
-      top: if($even, 0, -100%);
-      transform-origin: if($even, 100% 0, 0 100%);
-      transform: if($even, rotateY(if($initial, 180deg, 0deg)), rotateX(if($initial, -180deg, 0deg)));
-    }
-
-    @mixin fold-after($even, $initial: true) {
-      right: if($even, -100%, 0);
-      bottom: if($even, 0, -100%);
-      opacity: 1;
-      transform: if($even, rotateY(if($initial, -180deg, 0deg)), rotateX(if($initial, 180deg, 0deg)));
-    }
-
-    @mixin shadow-pages($prefix, $even, $initial: true) {
-      @if $prefix == before {
-        background: linear-gradient(if($even, to left, to top), $darken, $base, $base);
-        background-position: if($even, if($initial, 0, 100%), if($initial, 0 0, 0 100%));
-      } @else {
-        background: linear-gradient(if($even, to right, to bottom), $darken, $base, $base);
-        background-position: if($even, if($initial, 100%, 0), if($initial, 0 100%, 0 0));
-      }
-      background-size: 200% 200%;
-    }
-
-    @mixin create-fold($id, $steps) {
-      $max: $steps + 1;
-      @for $i from 1 to $max {
-        $j: $steps - $i + 1;
-        @keyframes center-#{$i} {
-          0%, 100% {
-            @include fold-center($j);
-          }
-        }
-      }
-
-      $states: even odd;
-      $sides: before after;
-      @each $state in $states {
-        $even: $state == even;
-        @each $side in $sides {
-          $before: $side == before;
-          @keyframes #{$side}-#{$state} {
-            @if $before {
-              0% {
-                @include fold-before($even);
-              }
-              100% {
-                @include fold-before($even, false);
-              }
-            } @else {
-              0% {
-                @include fold-after($even);
-              }
-              100% {
-                @include fold-after($even, false);
-              }
-            }
-          }
-
-          @keyframes #{$side}-shadow-#{$state} {
-            0%, 100% {
-              @include shadow-pages($side, $even);
-            }
-            50% {
-              @include shadow-pages($side, $even, false);
-            }
-          }
-
-          @keyframes #{$side}-shadow-center-#{$state} {
-            0% {
-              @include shadow-center($side, $even);
-            }
-            100% {
-              @include shadow-center($side, $even, false);
-            }
-          }
-
-          @if $side == after {
-            @keyframes after-end-#{$state} {
-              0%, 100% {
-                @include fold-after(not $even);
-                background: $base;
-                opacity: 0;
-              }
-            }
-          }
-        }
-      }
-
-      ##{$id} {
-        animation: getSizesSteps($max);
-        background: $base;
-        left: 50%;
-        perspective: 1000;
-        position: relative;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        overflow: hidden;
-      }
-
-      &::before,
-      &::after {
-        content: "";
-        height: 100%;
-        position: absolute;
-        width: 100%;
-      }
-
-      &::before {
-        animation: getAnimations(before, $max);
-        z-index: 2;
-      }
-
-      &::after {
-        animation: getAnimations(after, $max);
-        transform-origin: 0 0;
-        z-index: 1;
-      }
-    }
-
-    // Apply the folding animation to the specified element with ID "fold"
-    #fold {
-      @include create-fold("fold", $folds);
-      img {
-        width: 100%; /* Make the image fill the folded area */
-        height: 100%; /* Make the image fill the folded area */
-        object-fit: cover; /* Maintain aspect ratio and cover the area */
-      }
-    }
-  </style>
-  <title>Folding Animation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+ 
+    body {
+      overflow: hidden;
+      font-size: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+ 
+    button {
+      font-family: inherit;
+      font-size: inherit;
+    }
+ 
+    .page {
+      overflow-y: auto;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      padding: 50px 0;
+      text-align: center;
+    }
+ 
+    .inner {
+      margin: auto;
+      height: 100%;
+      width: 700px;
+    }
+ 
+    .title {
+      margin-bottom: 50px;
+      font-size: 48px;
+    }
+ 
+    .button-wrapper {
+      margin-top: 50px;
+    }
+ 
+    .button {
+      position: relative;
+      height: 60px;
+      width: 300px;
+      background-color: transparent;
+      border: 3px solid #fff;
+      color: #fff;
+      cursor: pointer;
+      transition: color 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+ 
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-color: #fff;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+      }
+ 
+      &:hover {
+        &.button-start {
+          color: #f1b00f;
+        }
+ 
+        &.button-next {
+          color: #c598af;
+        }
+ 
+        &::before {
+          transform: scaleX(1)
+        }
+      }
+ 
+      &-text {
+        position: relative;
+      }
+    }
+ 
+    .start {
+      background-color: #f1b00f;
+      color: #fff;
+    }
+ 
+    .next {
+      background-color: #c598af;
+      color: #fff;
+ 
+      &-list {
+        list-style: disc;
+        text-align: left;
+        margin: auto;
+        width: 430px;
+        line-height: 1.6;
+      }
+    }
+ 
+    /* Transition */
+    @for $i from 1 through 5 {
+      $enter-delay: 400ms;
+ 
+      .page-enter-active {
+        overflow: hidden;
+        transition: transform $enter-delay cubic-bezier(0.4, 0.1, 0.7, 0.95);
+ 
+        .enter-#{$i} {
+          transition: 300ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+          transition-property: opacity, transform;
+          transition-delay: #{120ms * $i + $enter-delay};
+        }
+      }
+ 
+      .page-enter {
+        transform: translateX(100%);
+ 
+        .enter-#{$i} {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+      }
+ 
+      .page-leave-active {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="fold">
-    <img src="your-image.jpg" alt="Folded Image">
-  </div>
+  <!-- Vue.js App -->
+  <div id="app">
+    <transition name="page" :duration="1300">
+      <component :is="page" @change-page="onChangePage"></component>
+    </transition>
+  </div>
+ 
+  <!-- Vue.js Templates -->
+  <script type="text/x-template" id="start">
+    <div class="page start">
+      <div class="inner">
+        <h1 class="title enter-1">Page Transition Demo</h1>
+        <div class="button-wrapper enter-2">
+          <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
+            <span class="button-text">Start!</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </script>
+ 
+  <script type="text/x-template" id="next">
+    <div class="page next">
+      <div class="inner">
+        <h1 class="title enter-1">You may want to use...</h1>
+        <ul class="next-list enter-2">
+          <li>&lt;transition&gt; built-in component of Vue.js</li>
+          <li>CSS Transition/Animation for simple animation combinations</li>
+          <li>JavaScript hooks for complex animation</li>
+        </ul>
+        <div class="button-wrapper enter-5">
+          <button class="button button-next" type="button" @click="$emit('change-page', 'start')">
+            <span class="button-text">Back</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </script>
+ 
+  <!-- Vue.js Logic -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    Vue.config.productionTip = false;
+ 
+    Vue.component('start', {
+      template: '#start'
+    });
+ 
+    Vue.component('next', {
+      template: '#next'
+    });
+ 
+    new Vue({
+      el: '#app',
+      data: {
+        page: 'start'
+      },
+      methods: {
+        onChangePage(to) {
+          this.page = to;
+        }
+      }
+    });
+  </script>
 </body>
 </html>
