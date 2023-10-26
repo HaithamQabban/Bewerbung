@@ -10,14 +10,16 @@
     }
 
     .letter-title {
-      font-size: 25px;
-      margin-bottom: -1px; /* Adjust as needed */
+      font-size: 25px; /* Fix typo: 25px instead of 25x */
+      margin-bottom: 20px;
     }
 
     body {
       overflow: hidden;
       font-size: 13px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: skyblue;
+      -webkit-font-smoothing: antialiased;
     }
 
     button {
@@ -39,7 +41,7 @@
     .inner {
       margin: auto;
       height: 100%;
-      width: 800px;
+      max-width: 800px; /* Updated to max-width for responsiveness */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -47,10 +49,58 @@
     }
 
     .title {
-  margin-bottom: 20px; /* Adjust this value as needed */
-  font-size: 28px;
-}
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
 
+    .letter {
+      background: #fff;
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
+      margin-top: 20px;
+      max-width: 600px;
+      min-height: 200px;
+      padding: 10px;
+      position: relative;
+      width: 100%; /* Updated to full width for responsiveness */
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .letter:before,
+    .letter:after {
+      content: "";
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+
+    .letter:before {
+      background: #fafafa;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      left: -5px;
+      top: 4px;
+      transform: rotate(-2.5deg);
+      border-radius: 10px;
+    }
+
+    .letter:after {
+      background: #f6f6f6;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      right: -3px;
+      top: 1px;
+      transform: rotate(1.4deg);
+      border-radius: 10px;
+    }
+
+    .letter p {
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .letter p:last-child {
+      margin-bottom: 0;
+    }
 
     .button-wrapper {
       margin-top: 20px;
@@ -60,7 +110,7 @@
       position: relative;
       height: 40px;
       width: 200px;
-      margin-top: 20px; /* Adjust this value as needed */
+      margin-top: 20px;
       background-color: transparent;
       border: 5px solid #fff;
       color: #fff;
@@ -104,83 +154,41 @@
       color: #fff;
     }
 
-.next {
-  background-color: #c598af;
-  color: #fff;
-}
+    .next {
+      background-color: #c598af;
+      color: #fff;
+    }
 
-.next .title {
-  margin-bottom: 20px; /* Adjust this value as needed */
-  font-size: 28px;
-}
+    .next .title {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
 
-.next-list {
-  list-style: disc;
-  text-align: left;
-  margin: auto;
-  width: 430px;
-  line-height: 1.6;
-}
+    .next-list {
+      list-style: disc;
+      text-align: left;
+      margin: auto;
+      max-width: 430px; /* Adjusted width for responsiveness */
+      line-height: 1.6;
+    }
 
+    @media screen and (max-width: 800px) {
+      /* Adjust styles for smaller screens */
+      .inner {
+        padding: 20px;
+      }
+
+      .letter {
+        width: 100%;
+      }
+
+      .next-list {
+        max-width: 100%;
+      }
+    }
 
     /* Custom styles from the provided HTML */
-    .letter {
-      background: #fff;
-      box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
-      margin-top: 7px;
-      max-width: 600px;
-      min-height: 200px;
-      padding: 10px;
-      position: relative;
-      width: 450px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .letter:before,
-    .letter:after {
-      content: "";
-      height: 100%;
-      position: absolute;
-      width: 100%;
-      z-index: -1;
-    }
-
-    .letter:before {
-      background: #fafafa;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-      left: -5px;
-      top: 4px;
-      transform: rotate(-2.5deg);
-      border-radius: 10px;
-    }
-
-    .letter:after {
-      background: #f6f6f6;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-      right: -3px;
-      top: 1px;
-      transform: rotate(1.4deg);
-      border-radius: 10px;
-    }
-
-    .letter p {
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-
-    .letter p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Title styling */
     @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
-    body {
-      background-color: skyblue;
-      overflow: hidden;
-      font-family: "Luckiest Guy", cursive;
-      -webkit-font-smoothing: antialiased;
-    }
 
     h1 {
       cursor: default;
@@ -198,7 +206,8 @@
 
     h1 span {
       position: relative;
-      top: 20px;
+      top: 10px;
+      max-height: 20px;
       display: inline-block;
       -webkit-animation: bounce 0.3s ease infinite alternate;
       font-size: 80px;
