@@ -107,12 +107,6 @@
     }
 
     /* Custom styles from the provided HTML */
-    body {
-      background: linear-gradient(#ccc, #fff);
-      font: 14px sans-serif;
-      padding: 20px;
-    }
-
     .letter {
       background: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -168,6 +162,11 @@
           <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
             <span class="button-text">Start</span>
           </button>
+        </div>
+        <!-- Include the provided HTML for the "letter" here -->
+        <div class="letter">
+          <p>Dear Friends,</p>
+          <!-- Your existing content here -->
         </div>
       </div>
     </div>
