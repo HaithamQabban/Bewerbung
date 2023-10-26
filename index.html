@@ -9,9 +9,14 @@
       box-sizing: border-box;
     }
 
+    .letter-title {
+      font-size: 25px;
+      margin-bottom: -1px; /* Adjust as needed */
+    }
+
     body {
       overflow: hidden;
-      font-size: 24px;
+      font-size: 13px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
@@ -34,7 +39,7 @@
     .inner {
       margin: auto;
       height: 100%;
-      width: 700px;
+      width: 800px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -42,23 +47,25 @@
     }
 
     .title {
-      margin-bottom: 30px;
-      font-size: 48px;
-    }
+  margin-bottom: 20px; /* Adjust this value as needed */
+  font-size: 28px;
+}
+
 
     .button-wrapper {
-      margin-top: 50px;
+      margin-top: 20px;
     }
 
     .button {
       position: relative;
-      height: 60px;
-      width: 300px;
+      height: 40px;
+      width: 200px;
+      margin-top: 20px; /* Adjust this value as needed */
       background-color: transparent;
-      border: 3px solid #fff;
+      border: 5px solid #fff;
       color: #fff;
       cursor: pointer;
-      transition: color 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+      transition: color 20ms cubic-bezier(0.1, 0.3 0.7, 0.6, 0.9);
 
       &::before {
         content: '';
@@ -97,29 +104,35 @@
       color: #fff;
     }
 
-    .next {
-      background-color: #c598af;
-      color: #fff;
+.next {
+  background-color: #c598af;
+  color: #fff;
+}
 
-      &-list {
-        list-style: disc;
-        text-align: left;
-        margin: auto;
-        width: 430px;
-        line-height: 1.6;
-      }
-    }
+.next .title {
+  margin-bottom: 20px; /* Adjust this value as needed */
+  font-size: 28px;
+}
+
+.next-list {
+  list-style: disc;
+  text-align: left;
+  margin: auto;
+  width: 430px;
+  line-height: 1.6;
+}
+
 
     /* Custom styles from the provided HTML */
     .letter {
       background: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
       margin-top: 7px;
-      max-width: 1550px;
-      min-height: 1300px;
-      padding: 20px;
+      max-width: 600px;
+      min-height: 200px;
+      padding: 10px;
       position: relative;
-      width: 120%;
+      width: 450px;
       border-radius: 10px;
       overflow: hidden;
     }
@@ -159,6 +172,98 @@
     .letter p:last-child {
       margin-bottom: 0;
     }
+
+    /* Title styling */
+    @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
+    body {
+      background-color: skyblue;
+      overflow: hidden;
+      font-family: "Luckiest Guy", cursive;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1 {
+      cursor: default;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 700px;
+      margin: absolute;
+      display: block;
+      text-align: center;
+    }
+
+    h1 span {
+      position: relative;
+      top: 20px;
+      display: inline-block;
+      -webkit-animation: bounce 0.3s ease infinite alternate;
+      font-size: 80px;
+      color: #fff;
+      text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+        0 5px 0 #ccc, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
+        0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 span:nth-child(2) {
+      -webkit-animation-delay: 0.1s;
+    }
+
+    h1 span:nth-child(3) {
+      -webkit-animation-delay: 0.2s;
+    }
+
+    h1 span:nth-child(4) {
+      -webkit-animation-delay: 0.3s;
+    }
+
+    h1 span:nth-child(5) {
+      -webkit-animation-delay: 0.4s;
+    }
+
+    h1 span:nth-child(6) {
+      -webkit-animation-delay: 0.5s;
+    }
+
+    h1 span:nth-child(7) {
+      -webkit-animation-delay: 0.6s;
+    }
+
+    h1 span:nth-child(8) {
+      -webkit-animation-delay: 0.2s;
+    }
+
+    h1 span:nth-child(9) {
+      -webkit-animation-delay: 0.3s;
+    }
+
+    h1 span:nth-child(10) {
+      -webkit-animation-delay: 0.4s;
+    }
+
+    h1 span:nth-child(11) {
+      -webkit-animation-delay: 0.5s;
+    }
+
+    h1 span:nth-child(12) {
+      -webkit-animation-delay: 0.6s;
+    }
+
+    h1 span:nth-child(13) {
+      -webkit-animation-delay: 0.7s;
+    }
+
+    @-webkit-keyframes bounce {
+      100% {
+        top: -20px;
+        text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+          0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+          0 50px 25px rgba(0, 0, 0, 0.2);
+      }
+    }
   </style>
 </head>
 
@@ -174,28 +279,34 @@
   <script type="text/x-template" id="start">
     <div class="page start">
       <div class="inner">
-        <h1 class="title enter-1">Bewerbung</h1>
+        <h1 class="letter-title">
+          <span>B</span>
+          <span>e</span>
+          <span>w</span>
+          <span>e</span>
+          <span>r</span>
+          <span>b</span>
+          <span>u</span>
+          <span>n</span>
+          <span>g</span>
+        </h1>
+        <!-- Include the provided HTML for the "letter" here -->
+        <div class="letter">
+          <p style="color: black;">Bewerbung Vorlehre Informatiker EFZ Applikationsentwicklung</p>
+          <p style="color: black;">Sehr geehrte Frau Bove,</p>
+          <p style="color: black;">Mein Name ist Haitham Qabban. Ich bin sechzehn Jahre alt und komme aus dem Jemen. Seit dem Winter 2021 lebe ich mit meiner Familie in der Schweiz. Mein großes Ziel ist es, eine Ausbildung als Informatiker zu machen.</p>
+          <p style="color: black;">Im Moment besuche ich das Berufsvorbereitende Schuljahr an der BFF Bern, BPI Schwerpunkt Praxis und Integration. Vor allem Mathematik und Informatik gefallen mir sehr gut und machen mir Spaß. Die deutsche Sprache ist mir sehr wichtig, und ich lerne jede Woche. Ich brauche jedoch noch Zeit und möchte daher zuerst eine Vorlehre machen, um ein Jahr mehr zum Lernen zu haben und meine Fähigkeiten am Computer zu verbessern.</p>
+          <p style="color: black;">Ich habe bereits Erfahrung im Programmieren. Zum Beispiel habe ich eine Website mit HTML, CSS, JavaScript erstellt und ein Spiel mit C#. Meine Motivation, meine Fähigkeiten weiter zu vertiefen, ist sehr hoch. Meine Freizeit verbringe ich meistens am PC, um meine Fähigkeiten weiter zu verbessern. Meine Stärken liegen in meiner Vielseitigkeit und Kreativität. Außerdem habe ich eine gute Beobachtungsgabe, bin hilfsbereit und offen gegenüber Neuem.</p>
+          <p style="color: black;">Die Lehre würde ich gerne bei Ihnen absolvieren, weil Ihr Betrieb einen ausgezeichneten Ruf hat und mir einen guten Start in meine Berufstätigkeit ermöglichen würde.</p>
+          <p style="color: black;">Gerne erwarte ich Ihre Einladung zu einem persönlichen Gespräch.</p>
+          <p style="color: black;">Freundliche Grüße,</p>
+          <p style="color: black;">Haitham Qabban</p>
+        </div>
         <div class="button-wrapper enter-2">
           <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
             <span class="button-text">Start</span>
           </button>
         </div>
-        <!-- Include the provided HTML for the "letter" here -->
-        <div class="letter">
-  <p style="color: black;">Bewerbung Vorlehre Informatiker EFZ Applikationsentwicklung</p>
-  <p style="color: black;">Sehr geehrte Frau Bove</p>
-  <p style="color: black;">Mein Name ist Haitham Qabban, ich bin sechzehn Jahre alt und komme aus dem Jemen. Seit dem Winter 2021 lebe ich mit meiner Familie in der Schweiz. Mein grosses Ziel ist es eine Ausbildung als Informatiker zu machen.</p>
-  <p style="color: black;">Im Moment besuche ich das Berufsvorbereitende Schuljahr an der BFF Bern, BPI Schwerpunkt Praxis und Integration. Vor allem Mathematik und Informatik gefallen mir sehr gut und machen mir Spass. Die deutsche Sprache ist mir sehr wichtig und ich lerne jede Woche. Ich brauche jedoch noch Zeit und möchte daher zuerst eine Vorlehre machen, um ein Jahr mehr zum Lernen zu haben und meine Fähigkeiten am Computer zu verbessern.</p>
-  <p style="color: black;">Ich habe bereits Erfahrung im Programmieren, zum Beispiel habe ich eine Website mit HTML, CSS, JavaScript und ein Spiel mit C# erstellt. Meine Motivation, meine Fähigkeiten weiter zu vertiefen, ist sehr hoch.
-Meine Freizeit verbringe ich meistens am PC, um meine Fähigkeiten weiter zu verbessern. Meine Stärken liegen in meiner Vielseitigkeit und Kreativität, ausserdem habe ich eine gute Beobachtungsgabe, bin hilfsbereit und offen gegenüber Neuem.
-</p>
-  <p style="color: black;">Die Lehre würde ich gerne bei Ihnen absolvieren, weil Ihr Betrieb einen ausgezeichneten Ruf hat und mir einen guten Start in meine Berufstätigkeit ermöglichen würde.</p>
-  <p style="color: black;">Gerne erwarte ich Ihre Einladung zu einem persönlichen Gespräch.</p>
-  <p style="color: black;">Freundliche Grüße</p>
-  <p style="color: black;">Haitham Qabban</p>
-</div>
-
-
       </div>
     </div>
   </script>
@@ -203,8 +314,20 @@ Meine Freizeit verbringe ich meistens am PC, um meine Fähigkeiten weiter zu ver
   <script type="text/x-template" id="next">
     <div class="page next">
       <div class="inner">
-        <h1 class="title enter-1">Lebenslauf</h1>
+        <h1 class="title enter-1">
+          <span>B</span>
+          <span>e</span>
+          <span>w</span>
+          <span>e</span>
+          <span>r</span>
+          <span>b</span>
+          <span>u</span>
+          <span>n</span>
+          <span>g</span>
+        </h1>
+        <!-- Add content for the curriculum vitae -->
         <ul class="next-list enter-2">
+          <!-- Rest of the content remains unchanged -->
         </ul>
         <div class="button-wrapper enter-5">
           <button class="button button-next" type="button" @click="$emit('change-page', 'start')">
