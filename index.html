@@ -1,204 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
- 
-    body {
-      overflow: hidden;
-      font-size: 24px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
- 
-    button {
-      font-family: inherit;
-      font-size: inherit;
-    }
- 
-    .page {
-      overflow-y: auto;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      padding: 50px 0;
-      text-align: center;
-    }
- 
-    .inner {
-      margin: auto;
-      height: 100%;
-      width: 700px;
-    }
- 
-    .title {
-      margin-bottom: 50px;
-      font-size: 48px;
-    }
- 
-    .button-wrapper {
-      margin-top: 50px;
-    }
- 
-    .button {
-      position: relative;
-      height: 60px;
-      width: 300px;
-      background-color: transparent;
-      border: 3px solid #fff;
-      color: #fff;
-      cursor: pointer;
-      transition: color 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
- 
-      &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        background-color: #fff;
-        transform: scaleX(0);
-        transform-origin: left center;
-        transition: transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
-      }
- 
-      &:hover {
-        &.button-start {
-          color: #f1b00f;
-        }
- 
-        &.button-next {
-          color: #c598af;
-        }
- 
-        &::before {
-          transform: scaleX(1)
-        }
-      }
- 
-      &-text {
-        position: relative;
-      }
-    }
- 
-    .start {
-      background-color: #f1b00f;
-      color: #fff;
-    }
- 
-    .next {
-      background-color: #c598af;
-      color: #fff;
- 
-      &-list {
-        list-style: disc;
-        text-align: left;
-        margin: auto;
-        width: 430px;
-        line-height: 1.6;
-      }
-    }
- 
-    /* Transition */
-    @for $i from 1 through 5 {
-      $enter-delay: 400ms;
- 
-      .page-enter-active {
-        overflow: hidden;
-        transition: transform $enter-delay cubic-bezier(0.4, 0.1, 0.7, 0.95);
- 
-        .enter-#{$i} {
-          transition: 300ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
-          transition-property: opacity, transform;
-          transition-delay: #{120ms * $i + $enter-delay};
-        }
-      }
- 
-      .page-enter {
-        transform: translateX(100%);
- 
-        .enter-#{$i} {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-      }
- 
-      .page-leave-active {
-        display: block;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+      font-size: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    .page {
+      overflow-y: auto;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .inner {
+      margin: auto;
+      height: 100%;
+      width: 700px;
+    }
+
+    .title {
+      margin-bottom: 50px;
+      font-size: 48px;
+    }
+
+    .button-wrapper {
+      margin-top: 50px;
+    }
+
+    .button {
+      position: relative;
+      height: 60px;
+      width: 300px;
+      background-color: transparent;
+      border: 3px solid #fff;
+      color: #fff;
+      cursor: pointer;
+      transition: color 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-color: #fff;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+      }
+
+      &:hover {
+        &.button-start {
+          color: #f1b00f;
+        }
+
+        &.button-next {
+          color: #c598af;
+        }
+
+        &::before {
+          transform: scaleX(1)
+        }
+      }
+
+      &-text {
+        position: relative;
+      }
+    }
+
+    .start {
+      background-color: #f1b00f;
+      color: #fff;
+    }
+
+    .next {
+      background-color: #c598af;
+      color: #fff;
+
+      &-list {
+        list-style: disc;
+        text-align: left;
+        margin: auto;
+        width: 430px;
+        line-height: 1.6;
+      }
+    }
+
+    /* Transition */
+    @for $i from 1 through 5 {
+      $enter-delay: 400ms;
+
+      .page-enter-active {
+        overflow: hidden;
+        transition: transform $enter-delay cubic-bezier(0.4, 0.1, 0.7, 0.95);
+
+        .enter-#{$i} {
+          transition: 300ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+          transition-property: opacity, transform;
+          transition-delay: #{120ms * $i + $enter-delay};
+        }
+      }
+
+      .page-enter {
+        transform: translateX(100%);
+
+        .enter-#{$i} {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+      }
+
+      .page-leave-active {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Vue.js App -->
-  <div id="app">
-    <transition name="page" :duration="1300">
-      <component :is="page" @change-page="onChangePage"></component>
-    </transition>
-  </div>
- 
-  <!-- Vue.js Templates -->
-  <script type="text/x-template" id="start">
-    <div class="page start">
-      <div class="inner">
-        <h1 class="title enter-1">Page Transition Demo</h1>
-        <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">Start!</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </script>
- 
-  <script type="text/x-template" id="next">
-    <div class="page next">
-      <div class="inner">
-        <h1 class="title enter-1">You may want to use...</h1>
-        <ul class="next-list enter-2">
-          <li>&lt;transition&gt; built-in component of Vue.js</li>
-          <li>CSS Transition/Animation for simple animation combinations</li>
-          <li>JavaScript hooks for complex animation</li>
-        </ul>
-        <div class="button-wrapper enter-5">
-          <button class="button button-next" type="button" @click="$emit('change-page', 'start')">
-            <span class="button-text">Back</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </script>
- 
-  <!-- Vue.js Logic -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-  <script>
-    Vue.config.productionTip = false;
- 
-    Vue.component('start', {
-      template: '#start'
-    });
- 
-    Vue.component('next', {
-      template: '#next'
-    });
- 
-    new Vue({
-      el: '#app',
-      data: {
-        page: 'start'
-      },
-      methods: {
-        onChangePage(to) {
-          this.page = to;
-        }
-      }
-    });
-  </script>
+  <!-- Vue.js App -->
+  <div id="app">
+    <transition name="page" :duration="1300">
+      <component :is="page" @change-page="onChangePage"></component>
+    </transition>
+  </div>
+
+  <!-- Vue.js Templates -->
+  <script type="text/x-template" id="start">
+    <div class="page start">
+      <div class="inner">
+        <h1 class="title enter-1">Page Transition Demo</h1>
+        <div class="button-wrapper enter-2">
+          <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
+            <span class="button-text">Start!</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-template" id="next">
+    <div class="page next">
+      <div class="inner">
+        <h1 class="title enter-1">You may want to use...</h1>
+        <ul class="next-list enter-2">
+          <li>&lt;transition&gt; built-in component of Vue.js</li>
+          <li>CSS Transition/Animation for simple animation combinations</li>
+          <li>JavaScript hooks for complex animation</li>
+        </ul>
+        <div class="button-wrapper enter-5">
+          <button class="button button-next" type="button" @click="$emit('change-page', 'start')">
+            <span class="button-text">Back</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <!-- Vue.js Logic -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    Vue.config.productionTip = false;
+
+    Vue.component('start', {
+      template: '#start'
+    });
+
+    Vue.component('next', {
+      template: '#next'
+    });
+
+    new Vue({
+      el: '#app',
+      data: {
+        page: 'start'
+      },
+      methods: {
+        onChangePage(to) {
+          this.page = to;
+        }
+      }
+    });
+  </script>
 </body>
 </html>
