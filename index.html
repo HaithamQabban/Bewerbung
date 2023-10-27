@@ -4,55 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      background: linear-gradient(#ccc, #fff);
-      font: 14px sans-serif;
-      padding: 20px;
+    html, body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
     }
+
+    html {
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+      background: radial-gradient(circle at 50% 0%, #e1e1e1 10%, #555);
+    }
+
+    h3 {
+      margin: 45px 0 0;
+      text-align: right;
+      transform: rotate(-10deg);
+    }
+
     .letter {
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      margin: 26px auto 0;
-      max-width: 550px;
-      min-height: 300px;
+      background: #fafafa;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 300px 25px rgba(222, 198, 122, 0.7) inset;
+      width: 250px;
+      height: 350px;
+      margin: 1.5% 50% auto;
+      left: -225px;
       padding: 24px;
       position: relative;
-      width: 80%;
     }
+
     .letter:before, .letter:after {
       content: "";
-      height: 98%;
-      position: absolute;
-      width: 100%;
-      z-index: -1;
-    }
-    .letter:before {
       background: #fafafa;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
-      left: -5px;
-      top: 4px;
-      transform: rotate(-2.5deg);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), inset 0 0 300px rgba(222, 198, 122, 0.7);
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: -2;
+      transition: 0.5s;
     }
+
+    .letter:before {
+      left: -5px;
+      top: 2px;
+      transform: rotate(-1.5deg);
+    }
+
     .letter:after {
-      background: #f6f6f6;
-      box-shadow: 0 0 3px rgba(0,0,0,0.2);
       right: -3px;
-      top: 1px;
-      transform: rotate(1.4deg);
+      top: 0px;
+      transform: rotate(2.4deg);
+    }
+
+    .letter:hover:before {
+      transform: rotate(0deg);
+      border: solid rgba(111, 99, 61, 0.4);
+      border-width: 0px 0px 0px 1px;
+      left: -6px;
+      top: -6px;
+    }
+
+    .letter:hover:after {
+      transform: rotate(0deg);
+      border: solid rgba(111, 99, 61, 0.4);
+      border-width: 0px 0px 0px 1px;
+      right: 3px;
+      top: -3px;
     }
   </style>
 </head>
 <body>
 
-<div class="letter">
-  <p>Dear Friends,</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod porta tempor. Donec pulvinar turpis nec velit pellentesque quis rhoncus sapien facilisis. Mauris quis massa dui, rhoncus viverra quam. Nulla tempus, augue ut consectetur facilisis, arcu elit pellentesque arcu, sed rutrum orci turpis pulvinar augue. Donec eget arcu mauris. Vestibulum tristique consequat lacus eget laoreet. Integer sed nisl sed nibh pulvinar ornare quis nec quam. Aenean rhoncus ligula ut lectus placerat a commodo quam vulputate. In eu metus turpis.</p>
-  <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus facilisis erat in nibh auctor at aliquet velit vestibulum. Curabitur turpis diam, malesuada eu consequat eget, ultricies sed nunc. Aenean sed odio massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare vulputate congue. Quisque leo metus, condimentum nec molestie et, egestas luctus libero.</p>
-  <p>Mauris porta odio augue. Nam turpis dui, volutpat id feugiat vitae, sagittis a justo. Nam iaculis aliquet erat non varius. Suspendisse justo arcu, tincidunt sed auctor sit amet, fermentum id turpis. Suspendisse sed enim quis lorem vestibulum fermentum a ut nulla.</p>
-  <p>Nullam tincidunt elit quis nibh blandit interdum. Duis ullamcorper pellentesque pretium. Nulla facilisi. Morbi semper nisi et justo varius non fermentum metus ornare. Proin vehicula, mi vel volutpat accumsan, libero lacus euismod massa, id feugiat velit enim nec ligula. Aliquam ipsum est, volutpat aliquam tincidunt id, sagittis et velit. Nunc vitae massa vel dui facilisis consectetur vel id sem.</p>
+  <h3>Your Heading Here</h3>
 
-  <p>Aenean pulvinar, lacus ultrices euismod viverra, nulla diam interdum ligula, id mollis mi erat quis lectus. Morbi quis felis ut turpis condimentum dictum porttitor id mauris. Nam non tincidunt mauris. Donec viverra eleifend pharetra. Nulla eu ipsum et elit consectetur rutrum. Integer lorem purus, ultricies ac laoreet quis, feugiat vel dolor. Donec eu turpis neque. Nullam molestie sapien eu nibh semper sed convallis est pretium.</p>
-</div>
+  <div class="letter">
+    <!-- Your letter content goes here -->
+  </div>
 
 </body>
 </html>
