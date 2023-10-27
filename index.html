@@ -10,14 +10,17 @@
     }
 
     .letter-title {
-      font-size: 25x;
-      margin-bottom: 20px; /* Adjust as needed */
+      font-size: 25px;
+      margin-bottom: 20px;
     }
 
     body {
+      background: linear-gradient(#ccc, #fff);
+      font: 14px sans-serif;
+      padding: 20px;
       overflow: hidden;
-      font-size: 10px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: "Luckiest Guy", cursive;
+      -webkit-font-smoothing: antialiased;
     }
 
     button {
@@ -39,7 +42,7 @@
     .inner {
       margin: auto;
       height: 100%;
-      width: 800px;
+      width: 80%; /* Adjusted from 800px to 80% */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -47,19 +50,19 @@
     }
 
     .title {
-      margin-bottom: 20px; /* Adjust this value as needed */
+      margin-bottom: 20px;
       font-size: 28px;
     }
 
     .letter {
       background: #fff;
-      box-shadow: 0 0 1000px rgba(0, 0, 0, 0.9);
-      margin-top: 40px; /* Adjust this value for consistent space */
-      max-width: 400px;
-      min-height: 150px;
-      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      margin-top: 40px;
+      max-width: 550px; /* Adjusted from 400px to 550px */
+      min-height: 300px;
+      padding: 24px; /* Adjusted from 10px to 24px */
       position: relative;
-      width: 450px;
+      width: 100%; /* Adjusted from 450px to 100% */
       border-radius: 10px;
       overflow: hidden;
     }
@@ -67,7 +70,7 @@
     .letter:before,
     .letter:after {
       content: "";
-      height: 100%;
+      height: 98%;
       position: absolute;
       width: 100%;
       z-index: -1;
@@ -84,7 +87,7 @@
 
     .letter:after {
       background: #f6f6f6;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
       right: -3px;
       top: 1px;
       transform: rotate(1.4deg);
@@ -94,6 +97,7 @@
     .letter p {
       margin-bottom: 10px;
       line-height: 1.2;
+      color: black; /* Added color property */
     }
 
     .letter p:last-child {
@@ -108,7 +112,7 @@
       position: relative;
       height: 40px;
       width: 200px;
-      margin-top: -5px; /* Adjust this value as needed */
+      margin-top: -5px;
       background-color: transparent;
       border: 5px solid #fff;
       color: #fff;
@@ -158,7 +162,7 @@
     }
 
     .next .title {
-      margin-bottom: 20px; /* Adjust this value as needed */
+      margin-bottom: 20px;
       font-size: 28px;
     }
 
@@ -170,14 +174,7 @@
       line-height: 1.6;
     }
 
-    /* Custom styles from the provided HTML */
     @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
-    body {
-      background-color: skyblue;
-      overflow: hidden;
-      font-family: "Luckiest Guy", cursive;
-      -webkit-font-smoothing: antialiased;
-    }
 
     h1 {
       cursor: default;
@@ -290,15 +287,15 @@
         </h1>
         <!-- Include the provided HTML for the "letter" here -->
         <div class="letter">
-          <p style="color: black;">Bewerbung Vorlehre Informatiker EFZ Applikationsentwicklung</p>
-          <p style="color: black;">Sehr geehrte Frau Bove,</p>
-          <p style="color: black;">Mein Name ist Haitham Qabban. Ich bin sechzehn Jahre alt und komme aus dem Jemen. Seit dem Winter 2021 lebe ich mit meiner Familie in der Schweiz. Mein großes Ziel ist es, eine Ausbildung als Informatiker zu machen.</p>
-          <p style="color: black;">Im Moment besuche ich das Berufsvorbereitende Schuljahr an der BFF Bern, BPI Schwerpunkt Praxis und Integration. Vor allem Mathematik und Informatik gefallen mir sehr gut und machen mir Spaß. Die deutsche Sprache ist mir sehr wichtig, und ich lerne jede Woche. Ich brauche jedoch noch Zeit und möchte daher zuerst eine Vorlehre machen, um ein Jahr mehr zum Lernen zu haben und meine Fähigkeiten am Computer zu verbessern.</p>
-          <p style="color: black;">Ich habe bereits Erfahrung im Programmieren. Zum Beispiel habe ich eine Website mit HTML, CSS, JavaScript erstellt und ein Spiel mit C#. Meine Motivation, meine Fähigkeiten weiter zu vertiefen, ist sehr hoch. Meine Freizeit verbringe ich meistens am PC, um meine Fähigkeiten weiter zu verbessern. Meine Stärken liegen in meiner Vielseitigkeit und Kreativität. Außerdem habe ich eine gute Beobachtungsgabe, bin hilfsbereit und offen gegenüber Neuem.</p>
-          <p style="color: black;">Die Lehre würde ich gerne bei Ihnen absolvieren, weil Ihr Betrieb einen ausgezeichneten Ruf hat und mir einen guten Start in meine Berufstätigkeit ermöglichen würde.</p>
-          <p style="color: black;">Gerne erwarte ich Ihre Einladung zu einem persönlichen Gespräch.</p>
-          <p style="color: black;">Freundliche Grüße,</p>
-          <p style="color: black;">Haitham Qabban</p>
+          <p>Bewerbung Vorlehre Informatiker EFZ Applikationsentwicklung</p>
+          <p>Sehr geehrte Frau Bove,</p>
+          <p>Mein Name ist Haitham Qabban. Ich bin sechzehn Jahre alt und komme aus dem Jemen. Seit dem Winter 2021 lebe ich mit meiner Familie in der Schweiz. Mein großes Ziel ist es, eine Ausbildung als Informatiker zu machen.</p>
+          <p>Im Moment besuche ich das Berufsvorbereitende Schuljahr an der BFF Bern, BPI Schwerpunkt Praxis und Integration. Vor allem Mathematik und Informatik gefallen mir sehr gut und machen mir Spaß. Die deutsche Sprache ist mir sehr wichtig, und ich lerne jede Woche. Ich brauche jedoch noch Zeit und möchte daher zuerst eine Vorlehre machen, um ein Jahr mehr zum Lernen zu haben und meine Fähigkeiten am Computer zu verbessern.</p>
+          <p>Ich habe bereits Erfahrung im Programmieren. Zum Beispiel habe ich eine Website mit HTML, CSS, JavaScript erstellt und ein Spiel mit C#. Meine Motivation, meine Fähigkeiten weiter zu vertiefen, ist sehr hoch. Meine Freizeit verbringe ich meistens am PC, um meine Fähigkeiten weiter zu verbessern. Meine Stärken liegen in meiner Vielseitigkeit und Kreativität. Außerdem habe ich eine gute Beobachtungsgabe, bin hilfsbereit und offen gegenüber Neuem.</p>
+          <p>Die Lehre würde ich gerne bei Ihnen absolvieren, weil Ihr Betrieb einen ausgezeichneten Ruf hat und mir einen guten Start in meine Berufstätigkeit ermöglichen würde.</p>
+          <p>Gerne erwarte ich Ihre Einladung zu einem persönlichen Gespräch.</p>
+          <p>Freundliche Grüße,</p>
+          <p>Haitham Qabban</p>
         </div>
         <div class="button-wrapper enter-2">
           <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
