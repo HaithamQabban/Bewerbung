@@ -150,12 +150,21 @@
     .shadows:hover {
       text-shadow: -16px 6px 15px #ced0d3;
     }
+
+    /* Added Styles for Page Transition */
+    .slide-enter-active, .slide-leave-active {
+      transition: opacity 1s, transform 1s;
+    }
+    .slide-enter, .slide-leave-to {
+      opacity: 0;
+      transform: translateY(50px);
+    }
   </style>
 </head>
 <body>
   <!-- Vue.js App -->
   <div id="app">
-    <transition name="page" :duration="1300">
+    <transition :name="transitionName" mode="out-in">
       <component :is="page" @change-page="onChangePage"></component>
     </transition>
   </div>
@@ -202,7 +211,7 @@
               Haitham Qabban</h2>
         </div>
         <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
+          <button class="button button-start" type="button" @click="onChangePage('next')">
             <span class="button-text">Start</span>
           </button>
         </div>
@@ -231,10 +240,10 @@
           <!-- ... (content) ... -->
         </ul>
         <div class="button-wrapper enter-5">
-          <button class="button button-next" type="button" @click="$emit('change-page', 'start')">
+          <button class="button button-next" type="button" @click="onChangePage('start')">
             <span class="button-text">Back</span>
           </button>
-          <button class="button button-go" type="button" @click="$emit('change-page', 'additional')">
+          <button class="button button-go" type="button" @click="onChangePage('additional')">
             <span class="button-text">Go</span>
           </button>
         </div>
@@ -247,7 +256,7 @@
       <div class="inner">
         <h1>This is the additional page</h1>
         <div class="button-wrapper enter-2">
-          <button class="button button-back" type="button" @click="$emit('change-page', 'next')">
+          <button class="button button-back" type="button" @click="onChangePage('next')">
             <span class="button-text">Back</span>
           </button>
         </div>
@@ -271,11 +280,15 @@
     new Vue({
       el: '#app',
       data: {
-        page: 'start'
+        page: 'start',
+        transitionName: 'slide'
       },
       methods: {
         onChangePage(to) {
-          this.page = to;
+          this.transitionName = 'slide';
+          setTimeout(() => {
+            this.page = to;
+          }, 1000); // Ensure the transition completes before changing the page
         }
       }
     });
