@@ -1,609 +1,577 @@
+[07:43] Qabban Haitham, BFF Schüler
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    .letter-title {
-      font-size: 25px;
-      margin-bottom: 20px;
-    }
-    body {
-      overflow: hidden;
-      font-size: 10px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: skyblue;
-      -webkit-font-smoothing: antialiased;
-    }
-    button {
-      font-family: inherit;
-      font-size: inherit;
-    }
-    .page {
-      overflow-y: auto;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      padding: 50px 0;
-      text-align: center;
-    }
-    .inner {
-      margin: auto;
-      height: 100%;
-      width: 800px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .title {
-      margin-bottom: 20px;
-      font-size: 90px;
-    }
-    .letter {
-      background: #fff;
-      box-shadow: 0 0 1000px rgba(0, 0, 0, 0.9);
-      margin-top: -40px;
-      max-width: 600px;
-      min-height: 500px;
-      position: relative;
-      width: 500px;
-      border-radius: 10px;
-    }
-    .letter:before,
-    .letter:after {
-      content: "";
-      height: 100%;
-      position: absolute;
-      width: 100%;
-      z-index: -1;
-    }
-    .letter:before {
-      background: #fafafa;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-      left: -5px;
-      top: 4px;
-      transform: rotate(-2.5deg);
-      border-radius: 10px;
-    }
-    .letter:after {
-      background: #f6f6f6;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-      right: -3px;
-      top: 1px;
-      transform: rotate(1.4deg);
-      border-radius: 10px;
-    }
-    .letter p {
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-    .letter p:last-child {
-      margin-bottom: 0;
-    }
-    .button-wrapper {
-      margin-top: 20px;
-    }
-    .button {
-      position: relative;
-      height: 40px;
-      width: 200px;
-      margin-top: -5px;
-      background-color: transparent;
-      border: 5px solid #fff;
-      color: #fff;
-      cursor: pointer;
-      transition: color 10ms cubic-bezier(0.1, 0.3 0.7, 0.6, 0.9);
-    }
-    .button::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-      background-color: #fff;
-      transform: scaleX(0);
-      transform-origin: left center;
-      transition: transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
-    }
-    .button:hover {
-      color: #f1b00f;
-    }
-    .button::before {
-      transform: scaleX(1);
-    }
-    .button-text {
-      position: relative;
-    }
-    .start {
-      background-color: #4169e1;
-      color: #fff;
-    }
-    .next {
-      background-color: #ff0055;
-      color: #fff;
-    }
-    .next .title {
-      margin-bottom: 20px;
-      font-size: 28px;
-    }
-    .next-list {
-      list-style: disc;
-      text-align: left;
-      margin: auto;
-      width: 430px;
-      line-height: 1.6;
-    }
-    .neonText {
-      color: #fff;
-      text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #0fa,
-        0 0 82px #0fa,
-        0 0 92px #0fa,
-        0 0 102px #0fa,
-        0 0 151px #0fa;
-      font-size: 90px;
-    }
-    .container {
-      margin-top: 20vh;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .shadows {
-      position: relative;
-      text-transform: uppercase;
-      text-shadow: -15px 5px 20px #ced0d3;
-      color: white;
-      letter-spacing: -0.22em;
-      font-family: 'Anton', Arial, sans-serif;
-      user-select: none;
-      font-size: 95px;
-      transition: all 0.25s ease-out;
-    }
-    .shadows:hover {
-      text-shadow: -16px 6px 15px #ced0d3;
-    }
-
-    /* Add styles for the third page if needed */
-    .page.third {
-      background-color: lightgreen;
-    }
-  </style>
-</head>
-<body>
-  <!-- Vue.js App -->
-  <div id="app">
-    <transition name="page" :duration="1300">
-      <component :is="page" @change-page="onChangePage"></component>
-    </transition>
-  </div>
-
-  <!-- Vue.js Templates -->
-  <script type="text/x-template" id="start">
-    <div class="page start">
-      <div class="inner">
-        <h1 class="shadows">
-          <span>B</span><span>e</span><span>w</span><span>e</span><span>r</span><span>b</span><span>u</span><span>n</span><span>g</span>
-        </h1>
-        <!-- Include the provided HTML for the "letter" here -->
-        <div class="letter">
-          <h2 style="color: black;">
-            <!-- Your existing content for the start page -->
-            <h5 style="color: black;"> Haitham Qabban
-              Thunstrasse 192
-              3074 Muri b.Bern
-              <h5>
-              Swisscom AG Bern, Frau Diana Bove
-
-              Bern, 24. Oktober 2023
-
-              <h1 style="color: black;">Bewerbung Vorlehre Informatiker EFZ Applikationsentwicklung</h1>
-              Sehr geehrte Frau Bove
-              Mein Name ist Haitham Qabban, ich bin sechzehn Jahre alt und komme aus dem Jemen. Seit dem Winter 2021 lebe ich mit meiner Familie in der Schweiz. Mein grosses Ziel ist es eine Ausbildung als Informatiker zu machen.
-
-              Im Moment besuche ich das Berufsvorbereitende Schuljahr an der BFF Bern, BPI Schwerpunkt Praxis und Integration. Vor allem Mathematik und Informatik gefallen mir sehr gut und machen mir Spass. Die deutsche Sprache ist mir sehr wichtig und ich lerne jede Woche. Ich brauche jedoch noch Zeit und möchte daher zuerst eine Vorlehre machen, um ein Jahr mehr zum Lernen zu haben und meine Fähigkeiten am Computer zu verbessern.
-
-              Ich habe bereits Erfahrung im Programmieren, zum Beispiel habe ich eine Website mit HTML, CSS, JavaScript und ein Spiel mit C# erstellt. Meine Motivation, meine Fähigkeiten weiter zu vertiefen, ist sehr hoch.
-              Meine Freizeit verbringe ich meistens am PC, um meine Fähigkeiten weiter zu verbessern. Meine Stärken liegen in meiner Vielseitigkeit und Kreativität, ausserdem habe ich eine gute Beobachtungsgabe, bin hilfsbereit und offen gegenüber Neuem.
-
-              Die Lehre würde ich gerne bei Ihnen absolvieren, weil Ihr Betrieb einen ausgezeichneten Ruf hat und mir einen guten Start in meine Berufstätigkeit ermöglichen würde.
-
-              Gerne erwarte ich Ihre Einladung zu einem persönlichen Gespräch.
-              Freundliche Grüße
-
-              Haitham Qabban
-          </h2>
-        </div>
-        <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">Next</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </script>
-
-  <script type="text/x-template" id="next">
-    <div class="page next">
-      <div class="inner">
-        <div class="container">
-          <h1 class="neonText">
-            <span>L</span><span>E</span><span>B</span><span>E</span><span>S</span><span>L</span><span>A</span><span>U</span><span>F</span>
-          </h1>
-        </div>
-        <!-- Add content for the curriculum vitae -->
-        <ul class="next-list enter-2">
-          <!-- Rest of the content remains unchanged -->
-        </ul>
-        <div class="button-wrapper enter-5">
-          <button class="button button-next" type="button" @click="$emit('change-page', 'third')">
-            <span class="button-text">Go to Third Page</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </script>
-
-  <!-- Add a new template for the third page -->
-  <script type="text/x-template" id="third">
-    <div class="page third">
-      <div class="inner">
-        <h1>This is the third page</h1>
-        <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'start')">
-            <span class="button-text">Go Back</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </script>
-
-  <!-- Vue.js Logic -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-  <script>
-    Vue.config.productionTip = false;
-
-    Vue.component('start', {
-      template: '#start'
-    });
-
-    Vue.component('next', {
-      template: '#next'
-    });
-
-    Vue.component('third', {
-      template: '#third'
-    });
-
-    new Vue({
-      el: '#app',
-      data: {
-        page: 'start'
-      },
-      methods: {
-        onChangePage(to) {
-          this.page = to;
-        }
-      }
-    });
-  </script>
-</body>
-</html>
 
   <style>
+
     * {
+
       box-sizing: border-box;
+
     }
 
-    /* Global Styles */
     .letter-title {
+
       font-size: 25px;
+
       margin-bottom: 20px; /* Adjust as needed */
+
     }
 
     body {
+
       overflow: hidden;
+
       font-size: 10px;
+
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
       background-color: skyblue;
+
       -webkit-font-smoothing: antialiased;
+
     }
 
     button {
+
       font-family: inherit;
+
       font-size: inherit;
+
     }
 
     .page {
+
       overflow-y: auto;
+
       position: absolute;
+
       left: 0;
+
       right: 0;
+
       top: 0;
+
       bottom: 0;
+
       padding: 50px 0;
+
       text-align: center;
+
     }
 
     .inner {
+
       margin: auto;
+
       height: 100%;
+
       width: 800px;
+
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
+
       justify-content: center;
+
     }
 
-    /* Title Styles */
     .title {
+
       margin-bottom: 20px; /* Adjust this value as needed */
-      font-size: 90px;
+
+      font-size: 80px;
+
     }
 
-    /* Letter Styles */
-    .letter {
-      background: #fff;
-      box-shadow: 0 0 1000px rgba(0, 0, 0, 0.9);
-      margin-top: -40px; /* Adjust this value for consistent space */
-      max-width: 600px;
-      min-height: 500px;
+    .letter-container {
+
       position: relative;
-      width: 500px;
-      border-radius: 10px;
+
+      margin-top: 20px; /* Adjust as needed */
+
     }
 
-    /* Button Styles */
+    .letter {
+
+      background: #fff;
+
+      box-shadow: 0 0 1000px rgba(0, 0, 0, 0.9);
+
+      margin-top: -110px; /* Adjust this value for consistent space */
+
+      max-width: 600px;
+
+      min-height: 620px;
+
+      position: relative;
+
+      width: 500px;
+
+      border-radius: 10px;
+
+    }
+
+    .letter-image {
+
+      max-width: 100%;
+
+      height: auto;
+
+      border-radius: 10px;
+
+    }
+
     .button-wrapper {
+
       margin-top: 20px;
+
     }
 
     .button {
+
       position: relative;
+
       height: 40px;
+
       width: 200px;
-      margin-top: -5px; /* Adjust this value as needed */
+
+      margin-bottom: 11px; /* Adjust this value as needed */
+
       background-color: transparent;
+
       border: 5px solid #fff;
+
       color: #fff;
+
       cursor: pointer;
+
       transition: color 10ms cubic-bezier(0.1, 0.3 0.7, 0.6, 0.9);
+
+      &::before {
+
+        content: '';
+
+        position: absolute;
+
+        left: 0;
+
+        right: 0;
+
+        bottom: 0;
+
+        top: 0;
+
+        background-color: #fff;
+
+        transform: scaleX(0);
+
+        transform-origin: left center;
+
+        transition: transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+
+      }
+
+      &:hover {
+
+        &.button-start {
+
+          color: #f1b00f;
+
+        }
+
+        &.button-next {
+
+          color: #ff0055;
+
+        }
+
+        &::before {
+
+          transform: scaleX(1)
+
+        }
+
+      }
+
+      &-text {
+
+        position: relative;
+
+      }
+
     }
 
-    .button::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-      background-color: #fff;
-      transform: scaleX(0);
-      transform-origin: left center;
-      transition: transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
-    }
-
-    .button:hover {
-      color: #f1b00f;
-    }
-
-    .button::before {
-      transform: scaleX(1)
-    }
-
-    .button-text {
-      position: relative;
-    }
-
-    /* Start Page Styles */
     .start {
+
       background-color: #4169e1;
+
       color: #fff;
+
     }
 
-    /* Next Page Styles */
     .next {
+
       background-color: #ff0055;
+
       color: #fff;
+
     }
 
     .next .title {
+
       margin-bottom: 20px; /* Adjust this value as needed */
+
       font-size: 28px;
+
+      margin-bottom: 20px; /* Adjust this value as needed */
+
     }
 
     .next-list {
+
       list-style: disc;
+
       text-align: left;
+
       margin: auto;
+
       width: 430px;
+
       line-height: 1.6;
+
     }
 
-    /* Neon Text Styles */
     .neonText {
+
       color: #fff;
+
       text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #0fa,
-        0 0 82px #0fa,
-        0 0 92px #0fa,
-        0 0 102px #0fa,
-        0 0 151px #0fa;
+
+          0 0 7px #fff,
+
+          0 0 10px #fff,
+
+          0 0 21px #fff,
+
+          0 0 42px #0fa,
+
+          0 0 82px #0fa,
+
+          0 0 92px #0fa,
+
+          0 0 102px #0fa,
+
+          0 0 151px #0fa;
+
       font-size: 90px;
+
+      margin-bottom: 20px; /* Add margin-bottom to create space */
+
     }
 
-    /* Container Styles */
     .container {
-      margin-top: 20vh;
-      width: 100vw;
+
+      margin-top: -5vh;
+
+      width: 50vw;
+
       height: 100vh;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
     }
 
-    /* Shadows Styles */
     .shadows {
+
       position: relative;
+
       text-transform: uppercase;
+
       text-shadow: -15px 5px 20px #ced0d3;
+
       color: white;
+
       letter-spacing: -0.22em;
+
       font-family: 'Anton', Arial, sans-serif;
+
       user-select: none;
+
       text-transform: uppercase;
+
       font-size: 95px;
+
       transition: all 0.25s ease-out;
+
     }
 
     .shadows:hover {
+
       text-shadow: -16px 6px 15px #ced0d3;
+
     }
 
-    /* Slide Transition Styles */
-    .slide-enter-active,
-    .slide-leave-active {
-      transition: transform 0.5s;
-    }
-
-    .slide-enter, .slide-leave-to {
-      transform: translateX(100%);
-    }
   </style>
+
 </head>
 
 <body>
+
   <!-- Vue.js App -->
+
   <div id="app">
-    <transition :name="transitionName">
+
+    <transition name="page" :duration="1300">
+
       <component :is="page" @change-page="onChangePage"></component>
+
     </transition>
+
   </div>
 
   <!-- Vue.js Templates -->
-  <script type="text/x-template" id="start">
-    <div class="page start">
-      <div class="inner">
-        <h1 class="shadows">
-          <span>B</span>
-          <span>e</span>
-          <span>w</span>
-          <span>e</span>
-          <span>r</span>
-          <span>b</span>
-          <span>u</span>
-          <span>n</span>
-          <span>g</span>
-        </h1>
-        <div class="letter">
-          <!-- ... (Letter Content) ... -->
+
+<!-- Vue.js Templates -->
+
+<!-- Vue.js Templates -->
+
+<script type="text/x-template" id="start">
+
+  <div class="page start">
+
+    <div class="inner">
+
+      <h1 class="shadows" style="margin-bottom: 0; font-size: 90px;">
+
+        <span>B</span>
+
+        <span>e</span>
+
+        <span>w</span>
+
+        <span>e</span>
+
+        <span>r</span>
+
+        <span>b</span>
+
+        <span>u</span>
+
+        <span>n</span>
+
+        <span>g</span>
+
+        <!-- Replace the image element inside the .letter with the following -->
+
+        <div class="letter" style="background-image: url('bewerbung.jpg'); background-size: cover; background-position: center;">
+
+          <h2 class="letter-content" style="color: black;">
+
+            <!-- Your letter content here -->
+
+          </h2>
+
         </div>
-        <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">Start</span>
-          </button>
-        </div>
-      </div>
+
+      </h1>
+
+      <!-- Image in the letter -->
+
     </div>
-  </script>
+
+    <div class="button-wrapper enter-2" style="margin-top: 0;"> <!-- Set margin-top to 0 -->
+
+      <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
+
+        <span class="button-text">Start</span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</script>
+
 
   <script type="text/x-template" id="next">
+
     <div class="page next">
+
       <div class="inner">
+
         <div class="container">
-          <h1 class="neonText">
+
+          <h1 class="neonText" style="margin-bottom: 20px;"> <!-- Add margin-bottom to create space -->
+
             <span>L</span>
+
             <span>E</span>
+
             <span>B</span>
+
             <span>E</span>
+
             <span>S</span>
+
             <span>L</span>
+
             <span>A</span>
+
             <span>U</span>
+
             <span>F</span>
+
           </h1>
+
         </div>
+
+        <!-- Content for the curriculum vitae -->
+
+        <div class="letter-container">
+
+          <div class="letter">
+
+            <h2 class="letter-content" style="color: black; margin-top: 30px;">
+
+              <!-- Your letter content here -->
+
+            </h2>
+
+            <!-- Image in the letter -->
+
+            <img class="letter-image" src="leben.jpg" alt="Your Image Alt Text">
+
+          </div>
+
+        </div>
+
         <ul class="next-list enter-2">
-          <!-- ... (List Content) ... -->
+
+          <!-- Rest of the content remains unchanged -->
+
         </ul>
-        <div class="button-wrapper enter-5">
-          <button class="button button-next" type="button" @click="$emit('change-page', 'start')">
-            <span class="button-text">Back</span>
+
+        <div class="button-wrapper enter-5" style="margin-top: 20px;">
+
+          <button class="button button-next" type="button" @click="$emit('change-page', 'page4')">
+
+            <span class="button-text">Next Page</span>
+
           </button>
-          <button class="button button-go" type="button" @click="$emit('change-page', 'additional')">
-            <span class="button-text">Go</span>
-          </button>
+
         </div>
+
       </div>
+
     </div>
+
   </script>
 
-  <script type="text/x-template" id="additional">
-    <div class="page additional">
+  <script type="text/x-template" id="page4">
+
+    <div class="page next">
+
       <div class="inner">
-        <h1>This is the additional page</h1>
-        <div class="button-wrapper enter-2">
-          <button class="button button-back" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">Back</span>
-          </button>
+
+        <h1 class="neonText" style="margin-bottom: 20px;">
+
+        </h1>
+
+        <div class="letter-container">
+
+          <div class="letter">
+
+            <h2 class="letter-content" style="color: black; margin-top: 30px;">
+
+              <!-- Your content for page 4 -->
+
+            </h2>
+
+          </div>
+
         </div>
+
+        <div class="button-wrapper enter-5" style="margin-top: 20px;">
+
+          <button class="button button-next" type="button" @click="$emit('change-page', 'start')">
+
+            <span class="button-text">Back to Start</span>
+
+          </button>
+
+        </div>
+
       </div>
+
     </div>
+
   </script>
 
   <!-- Vue.js Logic -->
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
   <script>
+
     Vue.config.productionTip = false;
 
     Vue.component('start', {
+
       template: '#start'
+
     });
 
     Vue.component('next', {
+
       template: '#next'
+
     });
 
-    Vue.component('additional', {
-      template: '#additional'
+    Vue.component('page4', {
+
+      template: '#page4'
+
     });
 
     new Vue({
+
       el: '#app',
+
       data: {
-        page: 'start',
-        transitionName: ''
+
+        page: 'start'
+
       },
+
       methods: {
+
         onChangePage(to) {
-          this.transitionName = 'slide';
-          setTimeout(() => {
-            this.page = to;
-          }, 10); // Adding a minimal delay for the transition to take effect
+
+          this.page = to;
+
         }
+
       }
+
     });
+
   </script>
+
 </body>
 
 </html>
