@@ -211,7 +211,7 @@
           </h2>
         </div>
         <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
+          <button class="button button-next" type="button" @click="$emit('change-page', 'next')">
             <span class="button-text">Next</span>
           </button>
         </div>
@@ -232,14 +232,6 @@
         </ul>
         <div class="button-wrapper enter-5">
           <button class="button button-next" type="button" @click="$emit('change-page', 'third')">
-            <span class="button-text">Go to Third Page</span>
-          </button>
-        </div>
-        <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'start')">
-            <span class="button-text">Back</span>
-          </button>
-          <button class="button button-next" type="button" @click="$emit('change-page', 'fourth')">
             <span class="button-text">Next</span>
           </button>
         </div>
@@ -252,9 +244,6 @@
       <div class="inner">
         <h1>This is the third page</h1>
         <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">Back</span>
-          </button>
           <button class="button button-next" type="button" @click="$emit('change-page', 'fourth')">
             <span class="button-text">Next</span>
           </button>
@@ -269,9 +258,6 @@
       <div class="inner">
         <h1>This is the fourth page</h1>
         <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'third')">
-            <span class="button-text">Back</span>
-          </button>
           <button class="button button-next" type="button" @click="$emit('change-page', 'fifth')">
             <span class="button-text">Next</span>
           </button>
@@ -285,10 +271,9 @@
       <div class="inner">
         <h1>This is the fifth page</h1>
         <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'fourth')">
-            <span class="button-text">Back</span>
+          <button class="button button-next" type="button" @click="$emit('change-page', 'start')">
+            <span class="button-text">Back to Start</span>
           </button>
-          <!-- You can add more content or buttons for the fifth page as needed -->
         </div>
       </div>
     </div>
