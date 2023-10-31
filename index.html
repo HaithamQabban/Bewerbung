@@ -176,9 +176,17 @@
       text-shadow: -16px 6px 15px #ced0d3;
     }
 
-    /* Add styles for the third page if needed */
+    /* Add styles for the third, fourth, and fifth pages if needed */
     .page.third {
       background-color: lightgreen;
+    }
+
+    .page.fourth {
+      background-color: lightcoral;
+    }
+
+    .page.fifth {
+      background-color: lightseagreen;
     }
   </style>
 </head>
@@ -197,33 +205,9 @@
         <h1 class="shadows">
           <span>B</span><span>e</span><span>w</span><span>e</span><span>r</span><span>b</span><span>u</span><span>n</span><span>g</span>
         </h1>
-        <!-- Include the provided HTML for the "letter" here -->
         <div class="letter">
           <h2 style="color: black;">
-            <!-- Your existing content for the start page -->
-            <h5 style="color: black;"> Haitham Qabban
-              Thunstrasse 192
-              3074 Muri b.Bern
-              <h5>
-              Swisscom AG Bern, Frau Diana Bove
-
-              Bern, 24. Oktober 2023
-
-              <h1 style="color: black;">Bewerbung Vorlehre Informatiker EFZ Applikationsentwicklung</h1>
-              Sehr geehrte Frau Bove
-              Mein Name ist Haitham Qabban, ich bin sechzehn Jahre alt und komme aus dem Jemen. Seit dem Winter 2021 lebe ich mit meiner Familie in der Schweiz. Mein grosses Ziel ist es eine Ausbildung als Informatiker zu machen.
-
-              Im Moment besuche ich das Berufsvorbereitende Schuljahr an der BFF Bern, BPI Schwerpunkt Praxis und Integration. Vor allem Mathematik und Informatik gefallen mir sehr gut und machen mir Spass. Die deutsche Sprache ist mir sehr wichtig und ich lerne jede Woche. Ich brauche jedoch noch Zeit und möchte daher zuerst eine Vorlehre machen, um ein Jahr mehr zum Lernen zu haben und meine Fähigkeiten am Computer zu verbessern.
-
-              Ich habe bereits Erfahrung im Programmieren, zum Beispiel habe ich eine Website mit HTML, CSS, JavaScript und ein Spiel mit C# erstellt. Meine Motivation, meine Fähigkeiten weiter zu vertiefen, ist sehr hoch.
-              Meine Freizeit verbringe ich meistens am PC, um meine Fähigkeiten weiter zu verbessern. Meine Stärken liegen in meiner Vielseitigkeit und Kreativität, ausserdem habe ich eine gute Beobachtungsgabe, bin hilfsbereit und offen gegenüber Neuem.
-
-              Die Lehre würde ich gerne bei Ihnen absolvieren, weil Ihr Betrieb einen ausgezeichneten Ruf hat und mir einen guten Start in meine Berufstätigkeit ermöglichen würde.
-
-              Gerne erwarte ich Ihre Einladung zu einem persönlichen Gespräch.
-              Freundliche Grüße
-
-              Haitham Qabban
+            <!-- Existing content for the start page -->
           </h2>
         </div>
         <div class="button-wrapper enter-2">
@@ -243,28 +227,68 @@
             <span>L</span><span>E</span><span>B</span><span>E</span><span>S</span><span>L</span><span>A</span><span>U</span><span>F</span>
           </h1>
         </div>
-        <!-- Add content for the curriculum vitae -->
         <ul class="next-list enter-2">
-          <!-- Rest of the content remains unchanged -->
+          <!-- Content for the curriculum vitae remains unchanged -->
         </ul>
         <div class="button-wrapper enter-5">
           <button class="button button-next" type="button" @click="$emit('change-page', 'third')">
             <span class="button-text">Go to Third Page</span>
           </button>
         </div>
+        <div class="button-wrapper enter-2">
+          <button class="button button-start" type="button" @click="$emit('change-page', 'start')">
+            <span class="button-text">Back</span>
+          </button>
+          <button class="button button-next" type="button" @click="$emit('change-page', 'fourth')">
+            <span class="button-text">Next</span>
+          </button>
+        </div>
       </div>
     </div>
   </script>
 
-  <!-- Add a new template for the third page -->
   <script type="text/x-template" id="third">
     <div class="page third">
       <div class="inner">
         <h1>This is the third page</h1>
         <div class="button-wrapper enter-2">
-          <button class="button button-start" type="button" @click="$emit('change-page', 'start')">
-            <span class="button-text">Go Back</span>
+          <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
+            <span class="button-text">Back</span>
           </button>
+          <button class="button button-next" type="button" @click="$emit('change-page', 'fourth')">
+            <span class="button-text">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <!-- Add templates for the fourth and fifth pages -->
+  <script type="text/x-template" id="fourth">
+    <div class="page fourth">
+      <div class="inner">
+        <h1>This is the fourth page</h1>
+        <div class="button-wrapper enter-2">
+          <button class="button button-start" type="button" @click="$emit('change-page', 'third')">
+            <span class="button-text">Back</span>
+          </button>
+          <button class="button button-next" type="button" @click="$emit('change-page', 'fifth')">
+            <span class="button-text">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-template" id="fifth">
+    <div class="page fifth">
+      <div class="inner">
+        <h1>This is the fifth page</h1>
+        <div class="button-wrapper enter-2">
+          <button class="button button-start" type="button" @click="$emit('change-page', 'fourth')">
+            <span class="button-text">Back</span>
+          </button>
+          <!-- You can add more content or buttons for the fifth page as needed -->
         </div>
       </div>
     </div>
@@ -285,6 +309,14 @@
 
     Vue.component('third', {
       template: '#third'
+    });
+
+    Vue.component('fourth', {
+      template: '#fourth'
+    });
+
+    Vue.component('fifth', {
+      template: '#fifth'
     });
 
     new Vue({
